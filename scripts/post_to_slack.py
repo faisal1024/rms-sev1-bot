@@ -259,7 +259,7 @@ def build_slack_blocks(issues):
             age = f"{d_open} days"
         lines.append(f"- <{ticket_url}|{key}> - {summary} - {mention} [{age}]")
 
-    ticket_list = "\n".join(lines) if lines else "_No open Sev 1 tickets._"
+    ticket_list = "\n".join(lines) if lines else ":partying_face: *We got the tickets down to ZERO!! Great job team!!* :partying_face:"
 
     blocks = [
         {
@@ -326,11 +326,8 @@ def post_to_slack(blocks):
 
 if __name__ == "__main__":
     issues = fetch_tickets()
-    if issues:
-        blocks = build_slack_blocks(issues)
-        if DRY_RUN:
-            preview_message(blocks)
-        else:
-            post_to_slack(blocks)
+    blocks = build_slack_blocks(issues)
+    if DRY_RUN:
+        preview_message(blocks)
     else:
-        print("No tickets fetched - aborting.")
+        post_to_slack(blocks)
