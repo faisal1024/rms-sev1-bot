@@ -74,7 +74,7 @@ TICKET_BASE_URL   = f"{JIRA_BASE_URL}/jira/servicedesk/projects/RMS/queues/custo
 JIRA_EMAIL        = _secrets.get("JIRA_EMAIL", "faisal@molg.ai")
 JIRA_API_TOKEN    = _secrets.get("JIRA_API_TOKEN", "")
 
-SEV1_JQL = 'project = RMS AND resolution = Unresolved AND "severity[dropdown]" = "Severity 1" ORDER BY created ASC'
+SEV1_JQL = 'project = RMS AND resolution = Unresolved AND "severity[dropdown]" = "Severity 1" AND status = "Incoming" ORDER BY created ASC'
 
 # Static name map - handles special cases (e.g. "office" -> Jennifer)
 ASSIGNEE_SLACK_ID_MAP = {
